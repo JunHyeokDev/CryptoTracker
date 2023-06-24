@@ -11,14 +11,14 @@ import Foundation
 // https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en
 
 
-struct Coin: Codable, Identifiable {
+struct Coin: Codable,Identifiable {
     let id, symbol, name: String
     let image: String?
-    let marketCap, marketCapRank, fullyDilutedValuation: Int?
+    let marketCap, marketCapRank, fullyDilutedValuation: Double?
     let currentPrice: Double
-    let totalVolume, high24H, low24H: Int?
+    let totalVolume, high24H, low24H: Double?
     let priceChange24H, priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H: Double?
-    let circulatingSupply, totalSupply, maxSupply, ath: Int?
+    let circulatingSupply, totalSupply, maxSupply, ath: Double?
     let athChangePercentage: Double?
     let athDate: String?
     let atl, atlChangePercentage: Double?
@@ -74,5 +74,5 @@ struct Coin: Codable, Identifiable {
 
 // MARK: - SparklineIn7D
 struct SparklineIn7D: Codable {
-    let price: [Double]
+    let price: [Double]?
 }
