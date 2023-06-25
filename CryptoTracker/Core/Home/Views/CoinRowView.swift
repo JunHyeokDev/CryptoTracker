@@ -40,7 +40,7 @@ extension CoinRowView {
             Text("\(coin.rank)")
                 .font(.caption)
                 .foregroundStyle(Color.theme.secondaryText)
-            Circle()
+            CoinImageView(coin: coin)
                 .frame(width: 30,height: 30)
             Text("\(coin.symbol.uppercased())")
         }
