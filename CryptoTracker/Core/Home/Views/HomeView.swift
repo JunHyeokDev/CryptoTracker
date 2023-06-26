@@ -20,7 +20,7 @@ struct HomeView: View {
             // Contents
             VStack {
                 headerView
-                
+                SearchBarView(searchText: $vm.searchText)
                 columnTitles
                 
                 // Rows
