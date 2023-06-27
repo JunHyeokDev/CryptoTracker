@@ -14,57 +14,10 @@
             filePath = "CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "addSubscription()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305 - 2227378ad209f671"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CryptoTracker.HomeViewModel.addSubscription() -&gt; ()"
-                  moduleName = "CryptoTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "1212">
-               </Location>
-               <Location
-                  uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305 - 2227378ad209f633"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CryptoTracker.HomeViewModel.addSubscription() -&gt; ()"
-                  moduleName = "CryptoTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "692">
-               </Location>
-               <Location
-                  uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305 - 2227378ad209f633"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CryptoTracker.HomeViewModel.addSubscription() -&gt; ()"
-                  moduleName = "CryptoTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "1132">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

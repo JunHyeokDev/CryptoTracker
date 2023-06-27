@@ -11,12 +11,7 @@ import Combine
 
 class HomeViewModel : ObservableObject {
     
-    @Published var statistics: [Statistic] = [
-        Statistic(title: "Tmp1", value: "2343"),
-        Statistic(title: "Tmp1", value: "2343", percentageChange: 12.32),
-        Statistic(title: "Tmp1", value: "2343", percentageChange: -23.12),
-        Statistic(title: "Tmp1", value: "2343"),
-    ]
+    @Published var statistics: [Statistic] = []
     
     @Published var allCoins : [Coin] = []
     @Published var portfolioCoins : [Coin] = []
@@ -25,7 +20,7 @@ class HomeViewModel : ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
     private let coinDataService = CoinDataService()
-
+    private let marketDataService = MarketDataService()
     
     init() {
         addSubscription()
@@ -49,8 +44,32 @@ class HomeViewModel : ObservableObject {
                 self?.allCoins = returnedCoin
             }
             .store(in: &cancellables)
+        marketDataService.$allmarketData
+            .map(mapGlobalMarketData)
+            .sink { [weak self] statisticArray in
+                self?.statistics = statisticArray
+            }
+            .store(in: &cancellables)
         
+    }
+    
+    private func mapGlobalMarketData(marketdata: MarketData?) -> [Statistic] {
+        var stats: [Statistic] = []
+        guard let data = marketdata else { return stats }
         
+        let marketCap = Statistic(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
+        let volume = Statistic(title: "24h Volume", value: data.volume, percentageChange: nil)
+        let btcDominance = Statistic(title: "BTC Dominance", value: data.btcDominance)
+        let portfolio = Statistic(title: "Portfolio Value", value: "$0.00", percentageChange: 0)
+        
+        stats.append(contentsOf: [
+            marketCap,
+            volume,
+            btcDominance,
+            portfolio
+        ])
+        
+        return stats
     }
     
     
