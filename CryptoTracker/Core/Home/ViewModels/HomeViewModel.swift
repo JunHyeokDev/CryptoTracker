@@ -11,6 +11,13 @@ import Combine
 
 class HomeViewModel : ObservableObject {
     
+    @Published var statistics: [Statistic] = [
+        Statistic(title: "Tmp1", value: "2343"),
+        Statistic(title: "Tmp1", value: "2343", percentageChange: 12.32),
+        Statistic(title: "Tmp1", value: "2343", percentageChange: -23.12),
+        Statistic(title: "Tmp1", value: "2343"),
+    ]
+    
     @Published var allCoins : [Coin] = []
     @Published var portfolioCoins : [Coin] = []
     @Published var searchText : String = ""
@@ -35,7 +42,7 @@ class HomeViewModel : ObservableObject {
 //            .store(in: &cancellables)
         
         $searchText
-            .combineLatest($allCoins)
+            .combineLatest(coinDataService.$allcoins)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .map(filterCoin)
             .sink { [weak self] returnedCoin in

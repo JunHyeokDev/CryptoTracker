@@ -12,6 +12,8 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false
     
     
+    
+    
     var body: some View {
         ZStack {
             // Background
@@ -20,6 +22,7 @@ struct HomeView: View {
             // Contents
             VStack {
                 headerView
+                HomeStatsView(showPortfolio: $showPortfolio)
                 SearchBarView(searchText: $vm.searchText)
                 columnTitles
                 

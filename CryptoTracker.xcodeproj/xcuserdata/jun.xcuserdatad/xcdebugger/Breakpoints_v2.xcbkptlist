@@ -3,4 +3,243 @@
    uuid = "85CB6AE1-E91F-4FC4-A7C4-5FE3B6C7DE29"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "addSubscription()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305 - 2227378ad209f671"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoTracker.HomeViewModel.addSubscription() -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "1212">
+               </Location>
+               <Location
+                  uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305 - 2227378ad209f633"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoTracker.HomeViewModel.addSubscription() -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "692">
+               </Location>
+               <Location
+                  uuid = "50C6B590-3D3C-4DE5-BA8C-0086231BC305 - 2227378ad209f633"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoTracker.HomeViewModel.addSubscription() -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Core/Home/ViewModels/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "1132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4F9F70B-1E44-498A-AEB6-A63255008EE3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoTracker/Services/CoinDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getCoins()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A4F9F70B-1E44-498A-AEB6-A63255008EE3 - fcc9e9c270ab7204"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoTracker.CoinDataService.getCoins() -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Services/CoinDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "A4F9F70B-1E44-498A-AEB6-A63255008EE3 - fcc9e9c270ab7204"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoTracker.CoinDataService.getCoins() -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Services/CoinDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "380">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D284FB5A-B460-47C4-B3DE-FD351C0F11C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoTracker/Utilities/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "handleURLResponse(output:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D284FB5A-B460-47C4-B3DE-FD351C0F11C3 - c0de1e1de9ef1ab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CryptoTracker.NetworkManager.handleURLResponse(output: (data: Foundation.Data, response: __C.NSURLResponse)) throws -&gt; Foundation.Data"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Utilities/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "656">
+               </Location>
+               <Location
+                  uuid = "D284FB5A-B460-47C4-B3DE-FD351C0F11C3 - c0de1e1de9ef1ab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CryptoTracker.NetworkManager.handleURLResponse(output: (data: Foundation.Data, response: __C.NSURLResponse)) throws -&gt; Foundation.Data"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Utilities/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "800">
+               </Location>
+               <Location
+                  uuid = "D284FB5A-B460-47C4-B3DE-FD351C0F11C3 - c0de1e1de9ef1ab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CryptoTracker.NetworkManager.handleURLResponse(output: (data: Foundation.Data, response: __C.NSURLResponse)) throws -&gt; Foundation.Data"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Utilities/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "596">
+               </Location>
+               <Location
+                  uuid = "D284FB5A-B460-47C4-B3DE-FD351C0F11C3 - c0de1e1de9ef1ab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CryptoTracker.NetworkManager.handleURLResponse(output: (data: Foundation.Data, response: __C.NSURLResponse)) throws -&gt; Foundation.Data"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Utilities/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "732">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7A4EC3E-4619-4D2A-AE56-8C744CF1BA41"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoTracker/Utilities/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "handleCompletion(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7A4EC3E-4619-4D2A-AE56-8C744CF1BA41 - 71b47834ec935a21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CryptoTracker.NetworkManager.handleCompletion(completion: Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Utilities/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "C7A4EC3E-4619-4D2A-AE56-8C744CF1BA41 - 71b47834ec935a21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CryptoTracker.NetworkManager.handleCompletion(completion: Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "CryptoTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jun/Desktop/Dev/iOS/CryptoTracker/CryptoTracker/Utilities/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
