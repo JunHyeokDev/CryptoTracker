@@ -9,15 +9,17 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var vm : HomeViewModel
-    @State private var showPortfolio: Bool = false
-    
-    
-    
+    @State private var showPortfolio: Bool = false      // For animation
+    @State private var showportfolioView: Bool = false  // For new Sheet
     
     var body: some View {
         ZStack {
             // Background
-            Color.theme.background.ignoresSafeArea()
+            Color.theme.background.ignoresSafeArea() // We can even put the new sheet at the background.. ? How is it possible.?
+                .sheet(isPresented: $showportfolioView, content: {
+                    PortfolioView()
+                        .environmentObject(vm)
+                })
             
             // Contents
             VStack {
@@ -64,6 +66,11 @@ extension HomeView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none,value: showPortfolio)
+                .onTapGesture {
+                    if showPortfolio {
+                        showportfolioView.toggle()
+                    }
+                }
                 .background(
                     CircleButtonAnimationView(animate: $showPortfolio)
                 )
