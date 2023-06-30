@@ -51,13 +51,43 @@ extension HomeView {
     
     private var columnTitles : some View {
         HStack {
-            Text("Coin")
-            Spacer()
-            if showPortfolio {
-                Text("Holdings")
+            HStack {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity( (vm.sortOptions == .rank || vm.sortOptions == .rankReversed) ? 1.0 : 0.0 )
+                    .rotationEffect(Angle(degrees: vm.sortOptions == .rank ? 0 : 180))
+            }
+            .onTapGesture {
+                //with Animation
+                vm.sortOptions = vm.sortOptions == .rank ? .rankReversed : .rank
             }
             Spacer()
-            Text("Price")
+            
+            if showPortfolio {
+                HStack{
+                    Text("Holdings")
+                    Image(systemName: "chevron.down")
+                        .opacity( (vm.sortOptions == .holdings || vm.sortOptions == .holdingsReversed) ? 1.0 : 0.0 )
+                        .rotationEffect(Angle(degrees: vm.sortOptions == .holdings ? 0 : 180))
+
+                }
+                .onTapGesture {
+                    //with Animation
+                    vm.sortOptions = vm.sortOptions == .holdings ? .holdingsReversed : .holdings
+                }
+            }
+            
+            Spacer()
+            HStack {
+                Text("Price")
+                Image(systemName: "chevron.down")
+                    .opacity( (vm.sortOptions == .price || vm.sortOptions == .priceReversed) ? 1.0 : 0.0 )
+                    .rotationEffect(Angle(degrees: vm.sortOptions == .price ? 0 : 180))
+            }
+            .onTapGesture {
+                //with Animation
+                vm.sortOptions = vm.sortOptions == .price ? .priceReversed : .price
+            }
             
             Button(action: {
                 withAnimation(.linear(duration: 1.0)) {
