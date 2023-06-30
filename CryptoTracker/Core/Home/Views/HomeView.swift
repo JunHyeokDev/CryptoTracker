@@ -53,9 +53,20 @@ extension HomeView {
         HStack {
             Text("Coin")
             Spacer()
-            Text("Holdings")
+            if showPortfolio {
+                Text("Holdings")
+            }
             Spacer()
             Text("Price")
+            
+            Button(action: {
+                withAnimation(.linear(duration: 1.0)) {
+                    vm.reloadData()
+                }
+            }, label: {
+                Image(systemName: "goforward")
+            })
+            .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
         }
         .font(.caption)
         .foregroundStyle(Color.theme.secondaryText)

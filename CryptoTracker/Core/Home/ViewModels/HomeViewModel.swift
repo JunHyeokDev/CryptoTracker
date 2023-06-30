@@ -12,7 +12,7 @@ import Combine
 class HomeViewModel : ObservableObject {
     
     @Published var statistics: [Statistic] = []
-    
+    @Published var isLoading : Bool = false
     @Published var allCoins : [Coin] = []
     @Published var portfolioCoins : [Coin] = []
     @Published var searchText : String = ""
@@ -48,45 +48,76 @@ class HomeViewModel : ObservableObject {
                 self?.allCoins = returnedCoin
             }
             .store(in: &cancellables)
-        marketDataService.$allmarketData
-            .map(mapGlobalMarketData)
-            .sink { [weak self] statisticArray in
-                self?.statistics = statisticArray
-            }
-            .store(in: &cancellables)
         
         // PortfolioCoin
         $allCoins
             .combineLatest(portfolioDataService.$savedEntities)
-            .map { (coinModels, portfolioEntities) -> [Coin] in
-                
-                coinModels
-                    .compactMap { coin -> Coin? in
-                        guard let entity = portfolioEntities.first(where: {$0.coinID == coin.id }) else { return nil }
-                        return coin.updateHoldings(amount: entity.amount)
-                    }
-            }
+            .map(mapAllCoinsToPortfolioCoins)
             .sink { [weak self] returnedCoin in
                 self?.portfolioCoins = returnedCoin
             }
             .store(in: &cancellables)
         
+        marketDataService.$allmarketData
+            .combineLatest($portfolioCoins)
+            .map(mapGlobalMarketData)
+            .sink { [weak self] statisticArray in
+                self?.statistics = statisticArray
+                self?.isLoading = false
+            }
+            .store(in: &cancellables)
         
     }
     
+    
+    
+    
+    func reloadData() {
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getMarketData()
+        HapticManager.notification(type: .success)
+        
+    }
     
     func updatePortfolio(coin: Coin, amount: Double) {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
     
-    private func mapGlobalMarketData(marketdata: MarketData?) -> [Statistic] {
+    private func mapAllCoinsToPortfolioCoins(allCoins: [Coin], portfolioCoins: [Portfolio]) -> [Coin] {
+        allCoins
+            .compactMap { coin -> Coin? in
+                guard let entity = portfolioCoins.first(where: {$0.coinID == coin.id }) else { return nil }
+                return coin.updateHoldings(amount: entity.amount)
+            }
+    }
+    
+    private func mapGlobalMarketData(marketdata: MarketData?, portfolioCoins: [Coin]) -> [Statistic] {
         var stats: [Statistic] = []
         guard let data = marketdata else { return stats }
         
         let marketCap = Statistic(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
         let volume = Statistic(title: "24h Volume", value: data.volume, percentageChange: nil)
         let btcDominance = Statistic(title: "BTC Dominance", value: data.btcDominance)
-        let portfolio = Statistic(title: "Portfolio Value", value: "$0.00", percentageChange: 0)
+        
+        
+        let portfolioValue = portfolioCoins
+                                .map({$0.currentHoldingsValue})
+                                .reduce(0, +)
+        
+        let previousValue = portfolioCoins
+                .map { coin -> Double in
+            let currentValue = coin.currentHoldingsValue
+            let percentChange = (coin.priceChangePercentage24H ?? 0) / 100
+            let previousValue = currentValue / (1 + percentChange)
+            return previousValue
+                }
+                .reduce(0, +)
+        
+        let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        
+        let portfolio = Statistic(title: "Portfolio Value", value: portfolioValue.asCurrencyWith6Decimal(), percentageChange: percentageChange)
+      
         
         stats.append(contentsOf: [
             marketCap,

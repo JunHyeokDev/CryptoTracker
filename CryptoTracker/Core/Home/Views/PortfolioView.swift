@@ -28,7 +28,7 @@ struct PortfolioView: View {
                 }
             }
             .navigationTitle("Edit Portfolio")
-            .toolbar {
+            .toolbar (content: {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
                         dismiss()
@@ -37,28 +37,37 @@ struct PortfolioView: View {
                             .font(.headline)
                     })
                 }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            
-                        }, label: {
-                            Image(systemName: "checkmark")
-                        })
-                        .opacity(
-                            (selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText)) ? 1.0 : 0.0 )
+                ToolbarItem(placement: .topBarTrailing) {
+                    trailingNavBarButton
                 }
-            }
-            .onChange(of: vm.searchText, perform: { value in
+            })
+            .onChange(of: vm.searchText) { value in
                 if value == "" {
                     removeSelectedCoin()
                 }
-            })
+            }
         }
     }
 }
 
 
 extension PortfolioView {
+    
+    private var trailingNavBarButton: some View {
+        HStack(spacing: 10) {
+            
+            Button(action: {
+                saveButtonPressed()
+            }, label: {
+                Text("Save".uppercased())
+            })
+            .opacity(
+                (selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText)) ? 1.0 : 0.0
+            )
+            
+        }
+        .font(.headline)
+    }
     
     private func updateSelectedCoin(coin: Coin) {
         selectedCoin = coin
