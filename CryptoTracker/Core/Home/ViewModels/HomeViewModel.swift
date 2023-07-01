@@ -94,9 +94,9 @@ class HomeViewModel : ObservableObject {
         case .rankReversed, .holdingsReversed:
             return coins.sorted(by: {$0.rank > $1.rank})
         case .price:
-            return coins.sorted(by: {$0.currentHoldingsValue > $1.currentHoldingsValue})
+            return coins.sorted(by: {$0.currentPrice > $1.currentPrice})
         case .priceReversed:
-            return coins.sorted(by: {$0.currentHoldingsValue < $1.currentHoldingsValue})
+            return coins.sorted(by: {$0.currentPrice < $1.currentPrice})
         }
     }
     
@@ -148,7 +148,7 @@ class HomeViewModel : ObservableObject {
         
         let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
         
-        let portfolio = Statistic(title: "Portfolio Value", value: portfolioValue.asCurrencyWith6Decimal(), percentageChange: percentageChange)
+        let portfolio = Statistic(title: "Portfolio Value", value: portfolioValue.asCurrencyWith2Decimal(), percentageChange: percentageChange)
       
         
         stats.append(contentsOf: [

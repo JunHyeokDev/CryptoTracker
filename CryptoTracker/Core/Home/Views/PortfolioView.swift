@@ -91,13 +91,13 @@ extension PortfolioView {
             HStack {
                 Text("Current Price of \(selectedCoin?.symbol.uppercased() ?? ""): ")
                 Spacer()
-                Text(selectedCoin?.currentPrice.asCurrencyWith6Decimal() ?? "")
+                Text(selectedCoin?.currentPrice.asCurrencyWith2Decimal() ?? "")
             }
             Divider()
             HStack {
                 Text("Amount in your portfolio")
                 Spacer()
-                TextField("Hello", text: $quantityText)
+                TextField("Ex : 1.4", text: $quantityText)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
             }
@@ -105,7 +105,7 @@ extension PortfolioView {
             HStack {
                 Text("Current value:")
                 Spacer()
-                Text(getCurrentValue().asCurrencyWith6Decimal())
+                Text(getCurrentValue().asCurrencyWith2Decimal())
             }
         }
         .padding()
@@ -121,6 +121,9 @@ extension PortfolioView {
                         .onTapGesture {
                             withAnimation(.easeInOut) {
                                 selectedCoin = coin
+                                if let selectedCoin = selectedCoin {
+                                    updateSelectedCoin(coin: selectedCoin)
+                                }
                             }
                         }
                         .background(

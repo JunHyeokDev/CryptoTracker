@@ -24,6 +24,9 @@ struct CoinRowView: View {
         }
         .font(.subheadline)
         .padding()
+        .background(
+            Color.theme.background.opacity(0.01)
+        )
     }
 }
 
@@ -48,7 +51,7 @@ extension CoinRowView {
     
     private var centerColumn : some View {
         VStack(alignment: .trailing) {
-            Text(coin.currentHoldingsValue.asCurrencyWith6Decimal())
+            Text(coin.currentHoldingsValue.asCurrencyWith2Decimal())
             Text((coin.currentHoldings ?? 0).asNumberString())
         }
         .foregroundStyle(Color.theme.accent)
@@ -56,7 +59,7 @@ extension CoinRowView {
 
     private var rightColumn : some View {
         VStack(alignment: .trailing) {
-            Text(coin.currentPrice.asCurrencyWith6Decimal())
+            Text(coin.currentPrice.asCurrencyWith2Decimal())
                 .foregroundStyle(Color.theme.accent)
             Text((coin.priceChangePercentage24H ?? 0.00).asPercentageString())
                 .foregroundStyle(

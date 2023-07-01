@@ -24,7 +24,7 @@ struct CoinLogoView: View {
             Text(coin.name)
                 .foregroundStyle(Color.theme.secondaryText)
                 .lineLimit(2)
-                .minimumScaleFactor(0.5)
+                .minimumScaleFactor(1.0)
                 .multilineTextAlignment(.center)
         }
     }

@@ -16,12 +16,12 @@ extension Double {
         formatter.numberStyle = .currency
         formatter.currencySymbol = "$"
         formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 6
+        formatter.maximumFractionDigits = 2
         
         return formatter
     }
     
-    func asCurrencyWith6Decimal() -> String {
+    func asCurrencyWith2Decimal() -> String {
         let number = NSNumber(value: self)
         return currencyFormatter.string(for: number) ?? "$0.00"
     }
