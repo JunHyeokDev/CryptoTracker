@@ -17,7 +17,6 @@ struct DetailLoadingView: View {
     var body: some View {
         ZStack {
             if let coin = coin {
-                Text(coin.name)
                 DetailView(coin: coin)
             }
         }
@@ -27,6 +26,11 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @StateObject var vm: DetailViewModel
+    private let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
+    private let spacing: CGFloat = 30
     
     init(coin: Coin) {
         _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
@@ -35,15 +39,55 @@ struct DetailView: View {
     
     
     var body: some View {
-        ZStack {
+        ScrollView {
+            VStack(spacing: 20) {
+                Text("")
+                    .frame(height: 150)
+                
+                Text("OverView")
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(Color.theme.accent)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Divider()
+                LazyVGrid(columns: columns,
+                          alignment: .center,
+                          spacing: spacing,
+                          pinnedViews: [],
+                          content: {
+                    ForEach(vm.overviewStatistics) { stat in
+                        StatisticView(stat: stat)
+                    }
+                }                )
+                
+                Text("Additional Details")
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(Color.theme.accent)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Divider()
+                LazyVGrid(columns: columns,
+                          alignment: .center,
+                          spacing: spacing,
+                          pinnedViews: [],
+                          content: {
+                    ForEach(vm.addtionalStatistics) { stat in
+                        StatisticView(stat: stat)
+                    }
+                })
+            }
+            .padding()
             
         }
+        .navigationTitle(vm.coin.name)
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(coin: dev.coin)
+        NavigationView {
+            DetailView(coin: dev.coin)
+        }
     }
 }
 
