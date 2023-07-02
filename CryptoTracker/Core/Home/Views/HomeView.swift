@@ -42,6 +42,9 @@ struct HomeView: View {
             }
         }
         .background(
+            
+            
+            
             NavigationLink(
                 destination: DetailLoadingView(coin: $selectedCoin),
                 isActive: $showDetailView,
