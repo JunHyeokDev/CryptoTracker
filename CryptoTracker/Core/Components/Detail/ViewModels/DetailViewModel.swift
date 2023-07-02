@@ -14,20 +14,24 @@ class DetailViewModel : ObservableObject{
     @Published var overviewStatistics: [Statistic] = []
     @Published var addtionalStatistics: [Statistic] = []
     
+    @Published var coinDescription: String? = nil
+    @Published var websiteURL: String? = nil
+    @Published var redditURL: String? = nil
+    
     @Published var coin: Coin
-    private let coindDetailService : CoinDetailDataService
+    private let coinDetailService : CoinDetailDataService
     private var cancellables: Set<AnyCancellable> = []
     
     
     init(coin: Coin){
         self.coin = coin
-        self.coindDetailService = CoinDetailDataService(coin: coin)
+        self.coinDetailService = CoinDetailDataService(coin: coin)
         self.addSubscribers()
     }
     
     
     private func addSubscribers() {
-        coindDetailService.$coinDetail
+        coinDetailService.$coinDetail
             .combineLatest($coin)
             .map(mapDataToStatistics)
             .sink { [weak self] (returnedCoin) in
@@ -35,10 +39,18 @@ class DetailViewModel : ObservableObject{
                 self?.addtionalStatistics = returnedCoin.additional
             }
             .store(in: &cancellables)
+        coinDetailService.$coinDetail
+            .sink { [weak self] coinDetail in
+                self?.coinDescription = coinDetail?.description?.en
+                self?.websiteURL = coinDetail?.links?.homepage?.first
+                self?.redditURL = coinDetail?.links?.subredditURL
+            }
+            .store(in: &cancellables)
+        
     }
     
     
-    private func mapDataToStatistics(coinDetail: Coin?, coin: Coin) -> (overview: [Statistic], additional: [Statistic]) {
+    private func mapDataToStatistics(coinDetail: CoinDetail?, coin: Coin) -> (overview: [Statistic], additional: [Statistic]) {
         let currentPrice = Statistic(title: "Current Price", value: coin.currentPrice.asCurrencyWith2Decimal(), percentageChange: coin.priceChangePercentage24H ?? 0)
         
         let marketCapValue = "$" + (coin.marketCap?.formattedWithAbbreviations() ?? "")
@@ -50,8 +62,8 @@ class DetailViewModel : ObservableObject{
             currentPrice,marketCap,rank,volume
         ]
 //
-        let high24H = Statistic(title: "24h High", value: coinDetail?.high24H?.asCurrencyWith2Decimal() ?? "N/A")
-        let low24H = Statistic(title: "24h Low", value: coinDetail?.low24H?.asCurrencyWith2Decimal() ?? "N/A")
+        let high24H = Statistic(title: "24h High", value: coin.high24H?.asCurrencyWith2Decimal() ?? "N/A")
+        let low24H = Statistic(title: "24h Low", value: coin.low24H?.asCurrencyWith2Decimal() ?? "N/A")
         let priceChange24H =
         Statistic(title: "24h Price Change",
                   value: coin.priceChange24H?.asCurrencyWith2Decimal() ?? "N/A" ,
@@ -63,5 +75,9 @@ class DetailViewModel : ObservableObject{
         ]
         
         return( overviewArray,additionalArray )
+    }
+    
+    var readableDescriotion: String? {
+        coinDescription?.removingHTMLTags()
     }
 }

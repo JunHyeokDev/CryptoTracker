@@ -42,9 +42,13 @@ struct HomeView: View {
             }
         }
         .background(
-            
-            
-            
+    
+//            NavigationStack {
+//                navigationDestination(isPresented: $showDetailView) {
+//                    DetailLoadingView(coin: $selectedCoin)
+//                }
+//            }
+//                        navigationDestination(isPresented:destination:), inside a NavigationStack or NavigationSplitView
             NavigationLink(
                 destination: DetailLoadingView(coin: $selectedCoin),
                 isActive: $showDetailView,

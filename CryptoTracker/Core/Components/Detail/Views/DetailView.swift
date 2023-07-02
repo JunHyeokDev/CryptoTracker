@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-
-
 struct DetailLoadingView: View {
     
     @Binding var coin: Coin?
@@ -26,6 +23,8 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @StateObject var vm: DetailViewModel
+    @State private var showFullDescription : Bool = false
+
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -43,13 +42,35 @@ struct DetailView: View {
             VStack(spacing: 20) {
                 ChartView(coin: vm.coin)
                     .frame(height: 200)
-                
                 overView
                 Divider()
+                
+                descriptionSection
+                
                 overViewGrid
                 additionalDetailView
                 Divider()
                 additionalDetailViewGrid
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    if let websiteString = vm.websiteURL,
+                       let url = URL(string: websiteString) {
+                        Link(destination: url, label: {
+                            Text("Website")
+                        })
+                        
+                    }
+                    
+                    if let subRedditString = vm.redditURL,
+                       let url = URL(string: subRedditString) {
+                        Link(destination: url, label: {
+                            Text("Reddit")
+                        })
+                    }
+                }
+                .tint(Color.blue)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
             }
             .padding()
             
@@ -64,6 +85,35 @@ struct DetailView: View {
 }
 
 extension DetailView {
+    
+    private var descriptionSection: some View {
+        ZStack {
+            if let readableDescriotion = vm.readableDescriotion,
+               !readableDescriotion.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(readableDescriotion)
+                        .font(.callout)
+                        .foregroundStyle(Color.theme.secondaryText)
+                        .lineLimit(showFullDescription ? nil : 3)
+                    Button(action: {
+                        withAnimation(.easeInOut) {
+                            showFullDescription.toggle()
+                        }
+                    }, label: {
+                        Text(showFullDescription ? "Less" : "Read more...")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .padding(.vertical, 4)
+                    })
+                    .tint(Color.blue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+    
+    
+    
     private var navigationTrailingItems: some View {
         HStack {
             Text(vm.coin.symbol.uppercased())

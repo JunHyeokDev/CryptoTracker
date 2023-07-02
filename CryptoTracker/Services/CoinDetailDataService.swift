@@ -15,7 +15,7 @@ class CoinDetailDataService {
     
     private var coinDetailSubscription: AnyCancellable?
     
-    @Published var coinDetail : Coin? = nil
+    @Published var coinDetail : CoinDetail? = nil
     let coin: Coin
     
     
@@ -31,9 +31,9 @@ class CoinDetailDataService {
         ) else { return }
         
         coinDetailSubscription = NetworkManager.download(url: url)
-            .decode(type: Coin.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: NetworkManager.handleCompletion, receiveValue:  { [weak self] coin in
-                self?.coinDetail = coin
+            .decode(type: CoinDetail.self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkManager.handleCompletion, receiveValue: { [weak self] coinDetail in
+                self?.coinDetail = coinDetail
                 self?.coinDetailSubscription?.cancel()
             })
         
