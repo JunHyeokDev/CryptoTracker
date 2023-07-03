@@ -12,4 +12,9 @@ extension String {
     func removingHTMLTags() -> String {
         return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
+    
+    var capitalizedString: String {
+            return self.capitalized
+    }
+    
 }
